@@ -1,0 +1,19 @@
+
+Ex 2:
+
+   1. Chacune des fonctions process_dat aXX comporte une erreur dans la façon dont elle accède aux éléments du tableau ou dans les limites de la boucle.
+      Dans le main, on alloue  de taille size  au tableau data. 
+      Dans process_data (i <= size) la boucle s'arrete juste apres la taille alloué au tableau data ce qui va au dela de la limite. 
+      Dans process_data2 (i < size + 50), pareil la condition d'arret de la boucle s'arrete au dela de la limite alloué au tableau. 
+      Dans process_data2 (i < size * 1000), pareil la condition d'arret de la boucle s'arrete au dela de la limite alloué au tableau. 
+
+    2. Dans process_data, le programme ne plante pas et n'affiche rien comme erreur alors qu'elle comporte une erreur ça peut etre du Même si l'accès hors limites se produit,
+       il est possible que les données dans la mémoire adjacente  puissent être écrasées sans conséquences graves pour l'exécution du programme. 
+       Dans process_data2, le programme plante et m'affiche double free or corruption (!prev) 
+                                                            Abandon (core dumped)            car elle essaie d'accéder à data[size + 50], cela dépasse les limites du tableau et provoque un plantage.
+
+        Dans process_data3, le programme plante et m'affiche double free or corruption (!prev)
+                                                                    Abandon (core dumped)  meme expplication que le process_data2.
+
+    3.
+    4. Non, une corruption de la mémoire ne mène pas toujours à un plantage du programme, et la probabilité de plantage dépend de plusieurs facteurs.

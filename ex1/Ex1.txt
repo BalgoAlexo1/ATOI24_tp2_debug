@@ -23,7 +23,7 @@ clean:
 	rm -f $(TARGET) *.so
 
 3. Oui il est fonctionnel 
-4. Le bug se trouve  dans la fonction  apply_laplacian dans la boucle y et x  sont  initialisés à 0 et que plus tard on fait l'opération y - 1 et x-1 donc ça partait en dehors de la limite de l'image.
+4. Le bug se trouve  dans la fonction  apply_laplacian dans la boucle y et x  sont  initialisés à 0 et que plus tard on fait l'opération y - 1 et x-1 donc ça commence en dehors des limite de la boucle.
    Grace au paquet 'gdb' qui me permet de trouver qu'est ce qui provoque le segmentation fault. 
 5. On initialise y à 1 et x à 1 et on met des -1 dans les condtions d'arrets des  boucles. 
 
