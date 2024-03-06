@@ -1,0 +1,30 @@
+Ex 1:
+ 1. a)Le programme génère des images PPM, dessine un carré rouge sur l'une d'entre elles, 
+ détecte les contours de cette image à l'aide d'un filtre laplacien, puis enregistre les images résultantes dans le fichier. 
+    b) La convolution est une opération mathématique effectuée sur une image à l'aide d'un noyau de convolution (une matrice de taille 3x3 ou 5x5 ) qui contient des coeffs numériques.
+       Le noyeau se déplace pixel par pixel sur l'image et les valeurs de chaque pixel sont multiplier par les valeurs correspondantes du noyeau. 
+       Le filtre laplacien est un type de noyeau  de convolution utilisé pour détecter les contours dans une image
+ 2. Le makefile :
+CC=gcc
+CFLAGS=-O3 -g
+LDFLAGS=-lm
+
+TARGET=main
+
+all: $(TARGET)
+
+libppm.so : ppm.c
+	$(CC) $(CFLAGS) -fpic -shared $^ -o $@
+
+main: main.c libppm.so
+	$(CC) $(CFLAGS) $(LDFLAGS) main.c -L. -lppm -Wl,-rpath=$(PWD) -o $@
+
+clean:
+	rm -f $(TARGET) *.so
+
+3. Oui il est fonctionnel 
+4. Le bug se trouve  dans la fonction  apply_laplacian dans la boucle y et x  sont  initialisés à 0 et que plus tard on fait l'opération y - 1 et x-1 donc ça partait en dehors de la limite de l'image.
+   Grace au paquet 'gdb' qui me permet de trouver qu'est ce qui provoque le segmentation fault. 
+5. On initialise y à 1 et x à 1 et on met des -1 dans les condtions d'arrets des  boucles. 
+
+
