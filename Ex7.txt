@@ -32,3 +32,5 @@ Thread 2 (Thread 0x7ffff7c006c0 (LWP 3586) "lock"):
 #2  0x00005555555551fa in thread1 (arg=0x0) at lock.c:17
 #3  0x00007ffff7e4d55a in ?? () from /usr/lib/libc.so.6
 #4  0x00007ffff7ecaa3c in ?? () from /usr/lib/libc.so.6
+
+4. Pour corriger ce code on met  les deux threads permettent d'acceder aux verrous  dans le meme ordre.
