@@ -1,0 +1,33 @@
+1. La foncction permet de marquer une chaine de caractere plus longue que celle imposé du tableau ce qui provoque un dépassement de tampon. 
+   Aussi la variable password_is_good est mal initialisé dans la fonction car apres la lecture du buffer, sa valeur est depend de ce qui est stocké dans la mémoire à ce moment là du code.
+   De ce fait si il y a dépassement de tampon, la valeur  peut etre modifié ou écrasée  ce qui fait que le code est vulnérable 
+
+2.                     -------------------------------
+        High addr -->  |    password_is_good (4B)    |
+                       -------------------------------
+                       |          buffer[8]          |
+                       |                             |
+                       |                             |
+                       |                             |
+                       |                             |
+                       |                             |
+                       |                             |
+                       |                             |
+                       -------------------------------
+                       |        Adresse de retour    |  
+                       -------------------------------
+                       |      Sauvegarde de EBP      |  
+                       -------------------------------
+                       |                             |  
+                       |                             |  
+                       |                             |  
+                       |                             |  
+                       |        Autres données       |  
+                       |                             |  
+                       |                             |  
+        Low addr  -->  |                             |  
+                       -------------------------------
+
+
+3. On peut mettre une chaine de caractere plus longue que la limité imposé et ainsi déclancher le dépassement de tampon.
+4.

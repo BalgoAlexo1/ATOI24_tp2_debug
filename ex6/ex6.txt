@@ -1,0 +1,4 @@
+1. Il y a une erreur dans sur la ligne 3 (unsigned long long fibonacci(unsigned long long n)) .
+2. Comme le type de la variable est un type non signé alors il ne peut pas renvoyé un resultat negatif (<0) donc dans le code,
+   la condition <O ne peut pas etre vraie car lorsque n atteindra 0, la boucle ne va pas pouvoir s'arreter (engendre une recursivité infini) et donc un dépassement de pile. 
+3. A la place de la condition if(n<0) on doit mettre if(n<=1) pour gerer le cas de base de la suite de fibonacci.

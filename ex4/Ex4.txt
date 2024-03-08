@@ -1,0 +1,6 @@
+1.Ce programme "somme" calcule la somme des éléments d'un tableau d'entiers et affiche le résultat. 
+2.Oui il fonctionne cela m'affiche un résultat.
+3.
+4. Le bug vient de la boucle for qui utilise <=5  au lieu de <5. Donc on a un dépassement de la limite du tableau pour acceder au dernier élément.
+    Le résultat final est 15. 
+    

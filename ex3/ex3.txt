@@ -1,5 +1,6 @@
 
 1. Une fuite de mémoire, également connue sous le nom d'allocation de mémoire non libérée, 
    se produit lorsqu'un programme alloue de la mémoire dynamiquement mais ne la libère pas lorsque cette mémoire n'est plus nécessaire. 
-2.La fuite de mémoire se trouve dans boucle pour liberer la mémoire dans les conditions on incrémente 1 à i. 
+2.On utilise l'outil Valgrind (valgrind --leak-check=full ./a.out)La fuite de mémoire se trouve dans boucle pour liberer la mémoire dans les conditions on incrémente 1 à i. 
   et dans le tableau segment on incrémente encore 1 à i . 
+3. Fait
