@@ -15,5 +15,5 @@ Ex 2:
         Dans process_data3, le programme plante et m'affiche double free or corruption (!prev)
                                                                     Abandon (core dumped)  meme expplication que le process_data2.
 
-    3.
+    3. On peut  utiliser des outils d'analyse statique tels que les analyseurs de code statique ou les outils de détection de dépassement de tampon. Pour l’erreur de “process_data3” on peut  utiliser des techniques de gestion de la mémoire, telles que l'optimisation de la taille de la mémoire allouée 
     4. Non, une corruption de la mémoire ne mène pas toujours à un plantage du programme, et la probabilité de plantage dépend de plusieurs facteurs.

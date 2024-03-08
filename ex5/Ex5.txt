@@ -30,4 +30,4 @@
 
 
 3. On peut mettre une chaine de caractere plus longue que la limité imposé et ainsi déclancher le dépassement de tampon.
-4.
+4. On doit  entrer la valeur 98 dans le buffer, on tape une chaîne suffisamment longue pour provoquer un dépassement de tampon, puis on ajoute "98" à la fin de la chaîne pour provoquer l'érreur.

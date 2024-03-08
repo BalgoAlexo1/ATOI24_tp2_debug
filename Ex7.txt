@@ -1,0 +1,34 @@
+1.
+a.Un thread est une séquence d'exécution indépendante dans un processus. 
+  Les threads permettent à un programme de réaliser plusieurs tâches simultanément ou de manière asynchrone.
+b.Un mutex  est un mécanisme de synchronisation utilisé pour garantir l'accès exclusif à une ressource partagée entre plusieurs threads.
+  Un mutex agit comme un verrou(0 à 1) qui permet à une seule thread à la fois d'accéder à la ressource protégée. Il peut mettre en attente le thread jusqu'à il le déverouille. 
+c.Ce code simule un deadlock entre les deux threads qui tentent d'obtenir l'accés aux verrous dans un ordre different. Dans thread1 il tente d'obtenir l'accés au verrou 1 puis au verrou 2. Et inversement dans le thread 2.
+  Et comme les deux threads tentent d'obtenir en premier un verrou different alors ils se retrouvent bloquer ce qui engendre un deadlock.
+
+2. Fait. Oui il dépend de la blibliothèque pthread. 
+3.  Il se termine à cause d'un deadlock expliqué dans la question 1. c.
+  a.On peut afficher l'état de programme avec GDB en utilisant la commande  "backtrace"
+  b.Cela m'affiche avec la commande  "bt": 
+(gdb) bt
+#0  0x00007ffff7e49ebe in ?? () from /usr/lib/libc.so.6
+#1  0x00007ffff7e4f0e3 in ?? () from /usr/lib/libc.so.6
+#2  0x0000555555555361 in main () at lock.c:55
+
+c.Cela affiche les traces de pile pour tous les threads. 
+
+(gdb) thread apply all bt
+
+Thread 3 (Thread 0x7ffff72006c0 (LWP 3587) "lock"):
+#0  0x00007ffff7e4a110 in ?? () from /usr/lib/libc.so.6
+#1  0x00007ffff7e509b2 in pthread_mutex_lock () from /usr/lib/libc.so.6
+#2  0x00005555555552ad in thread2 (arg=0x0) at lock.c:38
+#3  0x00007ffff7e4d55a in ?? () from /usr/lib/libc.so.6
+#4  0x00007ffff7ecaa3c in ?? () from /usr/lib/libc.so.6
+
+Thread 2 (Thread 0x7ffff7c006c0 (LWP 3586) "lock"):
+#0  0x00007ffff7e4a110 in ?? () from /usr/lib/libc.so.6
+#1  0x00007ffff7e509b2 in pthread_mutex_lock () from /usr/lib/libc.so.6
+#2  0x00005555555551fa in thread1 (arg=0x0) at lock.c:17
+#3  0x00007ffff7e4d55a in ?? () from /usr/lib/libc.so.6
+#4  0x00007ffff7ecaa3c in ?? () from /usr/lib/libc.so.6
